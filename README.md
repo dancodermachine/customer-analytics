@@ -81,19 +81,19 @@ $z = \frac{x - mean}{std}$
 ### 3.2 PCA
 PCA stands for Principal Component Analysis and it is the process of computing the principal components and using them to perform a change of basis on the data, sometimes using only the first few principal components and ignoring the rest. The key is to find now how many components will be needed. Therefore, a plot of cumulative variance of the components vs number of components will be displayed. The variance here means the amount of information it holds. The number of components which cumulative sum reaches 80% will be used.  
 
-[explained_variance](Report/explained_variance_components.png)
+![explained_variance](Report/explained_variance_components.png)
 
 The graph above shows that 3 components will be used. Now it is time to find the relation of the components with the other features. 
 
-[compoent 1](Report/component_1.png)
+![compoent 1](Report/component_1.png)
 
 Component 1 has a positive correlation with income, occupation, age and settlement size. This component relates to the career of a person.
 
-[compoent 2](Report/component_2.png)
+![compoent 2](Report/component_2.png)
 
 Component 2 has a positive correlation with education, marital status and sex. This component relates to the individuals education and lifestyle. 
 
-[compoent 3](Report/component_3.png)
+![compoent 3](Report/component_3.png)
 
 Component 3 has a positive correlation with age and negative correlation marital status and occupation. This component relates to experience of a person.
 
@@ -101,19 +101,19 @@ Component 3 has a positive correlation with age and negative correlation marital
 
 K-means clustering is a type of unsupervised learning, which is used when you have unlabeled data. The goal of this algorithm is to find groups in the data, with the number of groups represented by the variable K. For this project, we need to find the most optimal value for K. To achieve this, we will run a loop and try different K values, in order to assess the optimal K value, inertia will be extracted. Inertia can be recognized as a measure of how internally coherent clusters are. The model will be fitted with the standardize data applying PCA. A plot using the number of clusters in the x-axis and inertia in the y-axis will be displayed. 
 
-[kmeans](Report/inertia_numberclusters.png)
+![kmeans](Report/inertia_numberclusters.png)
 
 In the graph above, the elbow method was applied. In cluster analysis, the elbow method is a heuristic used in determining the number of clusters in a data set. The method consists of plotting the explained variance as a function of the number of clusters, and picking the elbow of the curve as the number of clusters to use. In this case K=4 is the best way to go. 
 
 After applying kmeans to the data, the following summary is obtained:
 
-[kmeans summary](Report/clusters_summary.png)
+![kmeans summary](Report/clusters_summary.png)
 
 The table above shows that "cluster 0" has 265 observations a represents 13.25% of our observations. "Cluster 0" is both high in component 1 and 2 which means high in education, lifestyle and career. This cluster will be called "well-off". "Cluster 1" shows that it has 460 observations which represent 23% of the data. "Cluster 1" is both low in component 1 and component 2 which means low in education, lifestyle and career, "cluster 1" will be called "fewer-opportunities". "Cluster 2" has 692 observations which represents 34.6% of the data. "Cluster 2" is low in component 1 (career) and high in component 2 (education and life-style). "Cluster 2" will be called "standard". "Cluster 3" has 583 observations which represents 29.15% of the data. "Cluster 3"is high in component 1 (career) and low in component 2 (education and life-style). This cluster will be called "career-focused".
 
 The following graph will show how well k-means perform:
 
-[3D kmeans](Report/customer_segmentation.png)
+![3D kmeans](Report/customer_segmentation.png)
 
 The models used to standardize, apply PCA and to clusters will be saved in the `Segmentation Models` folder with the following names:
 1. `scaler.pickle` 
@@ -126,37 +126,37 @@ The three models `scaler.pickle`, `pca.pickle` and `kmeans_pca.pickle` are used 
 
 The following pie chart shows the segment percentages.
 
-[segment percentages](Report/ds_segment.png)
+![segment percentages](Report/ds_segment.png)
 
 The chart depicts that 37.8% of observations belong to the "fewer-opportunities" segment, the 19.6% of observations belong to the "well-off" opportunities, the 20.6% of observations belong to the "standard" segment and that 22% of observations belong to the "caree-focused" segment. 
 
 Then some descriptive statistics is needed to apply for each segment. The average number of visits for each segment is shown below:
 
-[visits segment](Report/ds_visits_segment.png)
+![visits segment](Report/ds_visits_segment.png)
 
 The bar graph shown above shows that the average number of visits for the "well-off" segment is 117.30. The average number of visits for the "fewer-opportunities" segment is 113.73. The average number of visits for the "standard" segment is 117.70. The average number of visits for the "career-focused" segment is 123.45.
 
 The average number of purchases for each segment is shown below:
 
-[purchases segment](Report/ds_purchases_segment.png)
+![purchases segment](Report/ds_purchases_segment.png)
 
 The bar graph shown above shows that the average number of purchases for the "well-off" segment is 34.60. The average number of purchases for the "fewer-opportunities" segment is 22.76. The average number of purchases for the "standard" segment is 24.90. The average number of purchases for the "career-focused" segment is 39.83.
 
 The average purchases per visit for each segment is shown below:
 
-[purchase visit segment](Report/ds_purchase_visit_segment.png)
+![purchase visit segment](Report/ds_purchase_visit_segment.png)
 
 The bar graph shown above shows that the average purchases per visit for the "well-off" segment is 0.28. The average purchases per visit for the "fewer-opportunities" segment is 0.20. The average purchases per visit for the "standard" segment is 0.21. The average purchases per visit for the "career-focused" segment is 0.28.
 
 Brand choice for each segment is also important to know. The graph below shows the findings:
 
-[brand choice](Report/ds_brand_choice.png)
+![brand choice](Report/ds_brand_choice.png)
 
 It can be seen that the "well-off" segment has a preference for brand 4, the "fewer-opportunities" segment has a preference for brand 2, the "standard" segment don't really have a preference for a given chocolate, maybe for brand 2, and finally the "career-focused" segment has a preference for brand 5.
 
 Finally it is desirable to show who much revenue each brand brings, the graph below shows the findings. 
 
-[revenue brands](Report/ds_revenue_segment.png)
+![revenue brands](Report/ds_revenue_segment.png)
 
 
 ## 5. Deep Learning for Convertion Prediction
